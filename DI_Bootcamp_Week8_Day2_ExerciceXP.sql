@@ -59,7 +59,7 @@ SELECT first_name, last_name, amount, payment_date FROM public.customer INNER JO
 
 --13 /Write a query which will join the data in the customer table and the payment table. You want to get the first name and last name from the curstomer table, 
 -- as well as the amount and the date of every payment made by a customer, ordered by their id (from 1 to…).
-SELECT * FROM public.inventory INNER JOIN public.film on inventory.film_id <> film.film_id  ;
+SELECT * FROM public.film LEFT JOIN public.inventory on film.film_id = inventory.film_id  WHERE inventory.film_id IS NULL;
 
 --14 /Write a query which will join the data in the customer table and the payment table. You want to get the first name and last name from the curstomer table, 
 -- as well as the amount and the date of every payment made by a customer, ordered by their id (from 1 to…).
