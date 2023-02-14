@@ -65,7 +65,13 @@ SELECT * FROM public.film LEFT JOIN public.inventory on film.film_id = inventory
 -- as well as the amount and the date of every payment made by a customer, ordered by their id (from 1 to…).
 SELECT city, country  FROM public.city INNER JOIN public.country on city.city_id = country.country_id;
 
---15 /
+--15 /Bonus You want to be able to see how your sellers have been doing? Write a query to get the customer’s id, names (first and last), the amount and the date of payment ordered by the id of the staff member who sold them the dvd.
+SELECT customer.customer_id, customer.first_name||' '||customer.last_name as fullname, payment.amount, payment.payment_date, staff.first_name, staff.last_name, film.title FROM public.customer 
+INNER JOIN public.payment ON payment.customer_id = customer.customer_id 
+INNER JOIN public.staff ON staff.staff_id = payment.staff_id
+INNER JOIN public.rental ON rental.rental_id = staff.staff_id
+INNER JOIN public.inventory ON inventory.inventory_id = rental.inventory_id
+INNER JOIN public.film ON film.film_id = inventory.inventory_id;
 
 
 
